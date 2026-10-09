@@ -1,0 +1,4 @@
+name: frdm-imx95
+build:
+  cmake: .
+  kconfig: Kconfig

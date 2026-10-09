@@ -1,0 +1,8 @@
+[manifest]
+path = openamp-system-reference
+file = west.yml
+project-filter = -.*,+zephyr,+libmetal,+open-amp,+openamp-zephyr-modules,+hal_nxp,+cmsis,+cmsis_6
+
+[zephyr]
+base = zephyr
+

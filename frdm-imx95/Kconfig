@@ -1,0 +1,13 @@
+# Workspace fixes for running Zephyr on the FRDM-i.MX95 Cortex-M7 under
+# Linux remoteproc.
+
+config FRDM_IMX95_DTCM_ECC_INIT
+	bool "Initialise M7 DTCM ECC at reset"
+	default y if SOC_MIMX9596_M7
+	select SOC_EARLY_RESET_HOOK
+	help
+	  The M7 TCMs have ECC. When Linux remoteproc starts the M7 from a cold
+	  state, only the ELF sections are written. Any other DTCM word faults
+	  on the first read or sub-word write, so the firmware dies silently
+	  before printing anything. This writes all of DTCM once at reset,
+	  before Zephyr touches RAM.
