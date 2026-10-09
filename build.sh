@@ -39,6 +39,11 @@ source .venv/bin/activate
 if [ ! -d .west ]; then
 	west init -m "$MANIFEST_URL" --mr main .
 	DO_UPDATE=1
+elif [ ! -f openamp-system-reference/west.yml ]; then
+	# Fresh git clone: .west/config is in the repo, but the west checkouts
+	# are not, and 'west init' refuses to run when .west already exists.
+	git clone --branch main "$MANIFEST_URL" openamp-system-reference
+	DO_UPDATE=1
 fi
 west config manifest.project-filter -- "$PROJECT_FILTER"
 
