@@ -3,3 +3,16 @@ build/
 *.bin
 *.hex
 .venv
+
+# west-managed upstream checkouts (recreated by ./build.sh / west update)
+/zephyr/
+/modules/
+/libmetal/
+/open-amp/
+/openamp-system-reference/
+/openamp-zephyr-modules/
+
+# local editor / OS files
+.vscode/
+.DS_Store
+*.code-workspace
